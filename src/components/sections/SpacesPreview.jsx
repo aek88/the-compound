@@ -1,14 +1,5 @@
 import { Link } from 'react-router-dom'
 
-// Inline SVG patterns used as placeholder imagery for each space
-const PATTERNS = {
-  diagonal: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20L20 0' stroke='%23ffffff' stroke-width='0.4' opacity='0.12'/%3E%3C/svg%3E")`,
-  grid:     `url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h32v32H0z' fill='none'/%3E%3Cpath d='M0 0h1v32H0zM31 0h1v32h-1zM0 0v1h32V0zM0 31v1h32v-1z' fill='%23fff' opacity='0.07'/%3E%3C/svg%3E")`,
-  dots:     `url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%23ffffff' opacity='0.12'/%3E%3C/svg%3E")`,
-  hatch:    `url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 8h16M8 0v16' stroke='%23fff' stroke-width='0.3' opacity='0.09'/%3E%3C/svg%3E")`,
-  chevron:  `url("data:image/svg+xml,%3Csvg width='40' height='20' viewBox='0 0 40 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l20 10L40 0' fill='none' stroke='%23fff' stroke-width='0.4' opacity='0.1'/%3E%3C/svg%3E")`,
-}
-
 const spaces = [
   {
     id: 'cucina-edit',
@@ -20,10 +11,8 @@ const spaces = [
       'A refined culinary studio where chefs, food creators, and hospitality brands develop, test, and refine their concepts. State-of-the-art equipment in a space built for inspiration.',
     tags: ['Private Bookings', 'Photography Studio', 'Events'],
     image: {
-      gradient: 'linear-gradient(135deg, #3d1f0a 0%, #7a3b18 40%, #a8581f 70%, #c47a3a 100%)',
-      pattern: PATTERNS.diagonal,
-      label: 'Cucina',
-      labelColor: 'rgba(255,220,160,0.08)',
+      src: '/home-cucina.png',
+      alt: 'Cucina Edit — culinary workshop studio with marble island, arabesque tilework and brass cookware in a Dubai warehouse',
     },
   },
   {
@@ -36,10 +25,8 @@ const spaces = [
       'A high-spec dark kitchen purpose-built for delivery-first concepts and culinary R&D. Full commercial fit-out, cold storage, and dedicated dispatch logistics.',
     tags: ['Commercial Grade', 'Delivery Ready', 'R&D'],
     image: {
-      gradient: 'linear-gradient(160deg, #0a0a0a 0%, #161410 50%, #1e1a14 100%)',
-      pattern: PATTERNS.chevron,
-      label: 'Ghost',
-      labelColor: 'rgba(255,255,255,0.04)',
+      src: '/home-ghost.png',
+      alt: 'Ghost Dinners Kitchen — dark commercial kitchen with arabesque tile borders and amber pendant lighting',
     },
   },
   {
@@ -52,10 +39,8 @@ const spaces = [
       'A precision garage and showroom for collectors, restorers, and performance specialists. Climate-controlled bays, workshop equipment, and private storage.',
     tags: ['Workshop Bays', 'Climate Storage', 'Showroom'],
     image: {
-      gradient: 'linear-gradient(160deg, #111111 0%, #1c1c1c 50%, #252220 100%)',
-      pattern: PATTERNS.hatch,
-      label: 'Vault',
-      labelColor: 'rgba(255,255,255,0.04)',
+      src: '/home-vault.png',
+      alt: 'Automotive Vault — supercar showroom with Arabic geometric tilework and industrial pendant lighting',
     },
   },
   {
@@ -68,10 +53,8 @@ const spaces = [
       "Private office suites and serviced desks for businesses that demand a serious address. Fully equipped, tech-ready, and connected to The Compound's network.",
     tags: ['Private Suites', 'Meeting Rooms', 'Serviced'],
     image: {
-      gradient: 'linear-gradient(145deg, #0f1d2e 0%, #162940 50%, #1e3554 100%)',
-      pattern: PATTERNS.grid,
-      label: 'Serveo',
-      labelColor: 'rgba(100,160,255,0.06)',
+      src: '/home-serveo.png',
+      alt: 'Serveo Offices — modern office suites with mashrabiya brass screens and glass meeting rooms inside a warehouse',
     },
   },
   {
@@ -84,40 +67,21 @@ const spaces = [
       'The beating heart of The Compound. Specialty coffee, open co-working desks, and the social infrastructure that connects every business under this roof.',
     tags: ['Specialty Coffee', 'Open Desks', 'Events'],
     image: {
-      gradient: 'linear-gradient(135deg, #7a4a10 0%, #a8650f 40%, #c9913a 75%, #e5b86a 100%)',
-      pattern: PATTERNS.dots,
-      label: 'Cafe',
-      labelColor: 'rgba(255,240,200,0.1)',
+      src: '/home-cafe.png',
+      alt: 'Cafe & Co-working — specialty coffee bar with Zellige tile backsplash, oak desks and arabesque cement floors',
     },
   },
 ]
 
-function PlaceholderImage({ image, tall = false }) {
+function SpaceImage({ image, tall = false }) {
   return (
-    <div
-      className={`relative w-full overflow-hidden ${tall ? 'h-full min-h-[420px]' : 'h-56'}`}
-      style={{ background: image.gradient }}
-    >
-      {/* Texture pattern */}
-      <div
-        className="absolute inset-0"
-        style={{ backgroundImage: image.pattern, backgroundSize: '20px 20px' }}
+    <div className={`relative w-full overflow-hidden ${tall ? 'h-full min-h-[420px]' : 'h-56'}`}>
+      <img
+        src={image.src}
+        alt={image.alt}
+        className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-[1.04] transition-transform duration-700"
       />
-      {/* Large ghost label — watermark */}
-      <div
-        className="absolute inset-0 flex items-end justify-start p-6 overflow-hidden select-none"
-        aria-hidden="true"
-      >
-        <span
-          className="font-display font-800 leading-none tracking-tight text-[6rem] lg:text-[8rem] uppercase"
-          style={{ color: image.labelColor }}
-        >
-          {image.label}
-        </span>
-      </div>
-      {/* Subtle vignette */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-      {/* Bottom amber rule */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
       <div className="absolute bottom-0 left-0 w-12 h-[2px] bg-compound-amber" />
     </div>
   )
@@ -132,7 +96,7 @@ function SpaceCard({ space, featured = false }) {
     >
       {/* Image */}
       <div className={featured ? 'lg:w-[55%] shrink-0' : 'w-full'}>
-        <PlaceholderImage image={space.image} tall={featured} />
+        <SpaceImage image={space.image} tall={featured} />
       </div>
 
       {/* Content */}

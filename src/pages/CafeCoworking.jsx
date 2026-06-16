@@ -82,36 +82,6 @@ const AMENITIES = [
   },
 ]
 
-const GALLERY_IMAGES = [
-  {
-    label: 'The Atrium',
-    gradient: 'linear-gradient(155deg, #0d1208 0%, #1a2010 35%, #263018 65%, #324028 100%)',
-    pattern: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1' fill='%23ffffff' opacity='0.07'/%3E%3C/svg%3E")`,
-    aspect: 'aspect-[16/9]',
-    sub: 'Central atrium with full-height glazing and planted dividers',
-  },
-  {
-    label: 'Coffee Bar',
-    gradient: 'linear-gradient(135deg, #100c04 0%, #241808 45%, #382a14 100%)',
-    pattern: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20L20 0' stroke='%23ffffff' stroke-width='0.4' opacity='0.06'/%3E%3C/svg%3E")`,
-    aspect: 'aspect-[4/3]',
-    sub: 'Specialty espresso bar with single-origin filter',
-  },
-  {
-    label: 'Work Desks',
-    gradient: 'linear-gradient(145deg, #0a1008 0%, #121a0e 40%, #1a2418 70%, #243020 100%)',
-    pattern: `url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h1v32H0zM31 0h1v32h-1zM0 0v1h32V0zM0 31v1h32v-1z' fill='%23fff' opacity='0.05'/%3E%3C/svg%3E")`,
-    aspect: 'aspect-[4/3]',
-    sub: 'Hot-desk rows with integrated USB-C charging at every seat',
-  },
-  {
-    label: 'Lounge Zone',
-    gradient: 'linear-gradient(135deg, #0e1408 0%, #1a2010 45%, #283018 100%)',
-    pattern: `url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 24L24 0M12 24L24 12M0 12L12 0' stroke='%23fff' stroke-width='0.35' opacity='0.06'/%3E%3C/svg%3E")`,
-    aspect: 'aspect-[4/3]',
-    sub: 'Soft-seating lounge clusters for informal meetings',
-  },
-]
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
@@ -134,32 +104,22 @@ export default function CafeCoworking() {
     <>
       {/* ── HERO ── */}
       <section className="relative min-h-[80vh] flex flex-col justify-end overflow-hidden">
-        <div className="absolute inset-0" style={{
-          background: 'linear-gradient(155deg, #0c1208 0%, #1a2010 30%, #263020 55%, #334030 78%, #405040 100%)',
-        }}>
-          {/* Organic leaf-vein pattern */}
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0 Q60 20 40 40 Q20 60 40 80' fill='none' stroke='%23fff' stroke-width='0.5' opacity='0.05'/%3E%3Cpath d='M0 40 Q20 20 40 40 Q60 60 80 40' fill='none' stroke='%23fff' stroke-width='0.5' opacity='0.05'/%3E%3C/svg%3E")`,
-            backgroundSize: '80px 80px',
-          }} />
-          {/* Ghost watermark */}
-          <div className="absolute inset-0 flex items-center justify-end px-10 overflow-hidden select-none" aria-hidden>
-            <span className="font-display font-800 text-[18vw] leading-none tracking-tight uppercase"
-              style={{ color: 'rgba(92,122,66,0.10)' }}>
-              CAFE
-            </span>
-          </div>
-          {/* Vignette */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
-          {/* Accent vertical rule */}
-          <div className="absolute top-0 left-24 w-px h-full opacity-20"
-            style={{ background: ACCENT }} />
-        </div>
+        {/* Hero photo */}
+        <img
+          src="/cafe-coworking-hero.png"
+          alt="The Compound Cafe & Co-working — premium industrial cafe with biophilic design and specialty coffee bar inside a converted warehouse"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        {/* Vignette */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/15" />
+        {/* Accent vertical rule */}
+        <div className="absolute top-0 left-24 w-px h-full opacity-20"
+          style={{ background: ACCENT }} />
 
         {/* Hero content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pb-16 lg:pb-24 w-full">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 mb-10 text-[11px] font-body tracking-widest uppercase text-compound-white/40">
+          <div className="flex items-center gap-2 mb-10 text-[11px] font-body tracking-widest uppercase text-compound-white/60">
             <Link to="/" className="hover:text-compound-white/70 transition-colors">Home</Link>
             <span>/</span>
             <span className="hover:text-compound-white/70 transition-colors cursor-pointer">Spaces</span>
@@ -174,13 +134,13 @@ export default function CafeCoworking() {
             </span>
           </div>
 
-          <h1 className="font-display font-800 text-compound-white leading-none tracking-tight mb-6"
+          <h1 className="font-display font-800 text-compound-white leading-none tracking-tight mb-6 [text-shadow:0_2px_8px_rgba(0,0,0,0.5)]"
             style={{ fontSize: 'clamp(3rem, 8vw, 6rem)' }}>
             Cafe &<br />Co-working
           </h1>
 
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
-            <p className="font-body text-compound-white/60 text-[1.05rem] max-w-lg leading-relaxed">
+            <p className="font-body text-compound-white/80 text-[1.05rem] max-w-lg leading-relaxed">
               The beating heart of The Compound — an open, plant-filled cafe and
               co-working floor that connects every space and every person under one roof.
             </p>
@@ -311,85 +271,40 @@ export default function CafeCoworking() {
       {/* ── GALLERY ── */}
       <section className="bg-compound-surface py-20 lg:py-28 border-t border-compound-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <SectionEyebrow>Rendered Visuals</SectionEyebrow>
+          <SectionEyebrow>Photography</SectionEyebrow>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
             <h2 className="font-display font-800 leading-none tracking-tight text-compound-black"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.75rem)' }}>
-              Design Gallery
+              The Space in Action
             </h2>
             <p className="font-body text-compound-steel text-[0.875rem] max-w-xs">
-              Architectural render placeholders — photography coming upon completion.
+              Specialty coffee, focused co-working, and the lounge — the three moods of the Cafe & Co-working floor.
             </p>
           </div>
-
-          {/* Wide hero image + 3-col row */}
           <div className="space-y-4">
-            {/* Full-width atrium render */}
-            <div className="group relative overflow-hidden">
-              <div className={`relative w-full ${GALLERY_IMAGES[0].aspect} overflow-hidden`}
-                style={{ background: GALLERY_IMAGES[0].gradient }}>
-                <div className="absolute inset-0" style={{
-                  backgroundImage: GALLERY_IMAGES[0].pattern,
-                  backgroundSize: '40px 40px',
-                }} />
-                {/* Ghost label */}
-                <div className="absolute inset-0 flex items-center justify-center overflow-hidden select-none" aria-hidden>
-                  <span className="font-display font-800 text-[8rem] lg:text-[12rem] leading-none tracking-tight uppercase"
-                    style={{ color: 'rgba(92,122,66,0.09)' }}>
-                    {GALLERY_IMAGES[0].label}
-                  </span>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="font-body text-[10px] tracking-widest2 uppercase mb-1"
-                    style={{ color: ACCENT_L }}>
-                    Cafe & Co-working
-                  </p>
-                  <p className="font-display font-700 text-compound-white text-[1.2rem]">
-                    {GALLERY_IMAGES[0].label}
-                  </p>
-                  <p className="font-body text-compound-white/60 text-[0.85rem] mt-0.5">
-                    {GALLERY_IMAGES[0].sub}
-                  </p>
-                </div>
-                <div className="absolute top-4 right-4 px-2.5 py-1 border border-white/20 bg-black/30 backdrop-blur-sm">
-                  <span className="font-body text-[9px] tracking-widest uppercase text-white/50">Render</span>
-                </div>
+            {/* Full-width co-working wide shot — 16:9 */}
+            <div className="group relative overflow-hidden aspect-[16/9]">
+              <img src="/cafe-gallery-2.png" alt="Wide shot of the co-working cafe floor with people at long desks, warehouse windows flooding the space with morning light" className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+                <p className="font-body text-[10px] tracking-widest2 uppercase mb-1" style={{ color: ACCENT_L }}>Cafe & Co-working</p>
+                <p className="font-display font-700 text-compound-white text-[1.1rem]">The Co-working Floor</p>
+                <p className="font-body text-compound-white/80 text-[0.82rem] mt-0.5">Long shared desks · Edison pendants · coffee bar and greenery dividers</p>
               </div>
             </div>
-
-            {/* 3-col row */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {GALLERY_IMAGES.slice(1).map(img => (
-                <div key={img.label} className="group relative overflow-hidden">
-                  <div className={`relative w-full ${img.aspect} overflow-hidden`}
-                    style={{ background: img.gradient }}>
-                    <div className="absolute inset-0" style={{
-                      backgroundImage: img.pattern,
-                      backgroundSize: '40px 40px',
-                    }} />
-                    <div className="absolute inset-0 flex items-center justify-center overflow-hidden select-none" aria-hidden>
-                      <span className="font-display font-800 text-[4rem] lg:text-[5rem] leading-none tracking-tight uppercase text-center"
-                        style={{ color: 'rgba(92,122,66,0.10)' }}>
-                        {img.label}
-                      </span>
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-                      <p className="font-body text-[9px] tracking-widest2 uppercase mb-0.5"
-                        style={{ color: ACCENT_L }}>
-                        Cafe & Co-working
-                      </p>
-                      <p className="font-display font-700 text-compound-white text-[0.95rem]">
-                        {img.label}
-                      </p>
-                      <p className="font-body text-compound-white/55 text-[0.78rem] mt-0.5">
-                        {img.sub}
-                      </p>
-                    </div>
-                    <div className="absolute top-3 right-3 px-2 py-1 border border-white/20 bg-black/30 backdrop-blur-sm">
-                      <span className="font-body text-[9px] tracking-widest uppercase text-white/50">Render</span>
-                    </div>
+            {/* Two 4:3 cards side by side */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { src: '/cafe-gallery-1.png', alt: "Barista's hands pulling an espresso shot at a La Marzocco machine on a dark slate counter", label: 'Specialty Coffee Bar', sub: 'Single-origin espresso · filter · seasonal specials' },
+                { src: '/cafe-gallery-3.png', alt: 'Calm lounge seating area with low sofas surrounded by structural indoor plants and soft afternoon light', label: 'Lounge Zone', sub: 'Biophilic planting · soft seating · quiet corners for longer conversations' },
+              ].map(({ src, alt, label, sub }) => (
+                <div key={label} className="group relative overflow-hidden aspect-[4/3]">
+                  <img src={src} alt={alt} className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+                    <p className="font-body text-[10px] tracking-widest2 uppercase mb-1" style={{ color: ACCENT_L }}>Cafe & Co-working</p>
+                    <p className="font-display font-700 text-compound-white text-[1rem]">{label}</p>
+                    <p className="font-body text-compound-white/80 text-[0.8rem] mt-0.5">{sub}</p>
                   </div>
                 </div>
               ))}

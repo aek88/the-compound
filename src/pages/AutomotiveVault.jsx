@@ -69,36 +69,6 @@ const CAPACITY = [
   { value: '1',       label: 'Detail & Wash Bay',     sub: 'enclosed, fully equipped' },
 ]
 
-const GALLERY_IMAGES = [
-  {
-    label: 'The Vault',
-    gradient: 'linear-gradient(155deg, #050708 0%, #0b0f14 35%, #111820 65%, #182030 100%)',
-    pattern: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l60 60M60 0L0 60' stroke='%23fff' stroke-width='0.3' opacity='0.05'/%3E%3C/svg%3E")`,
-    aspect: 'aspect-[4/3]',
-    sub: 'Climate-controlled vault — 4 floor bays + car lift',
-  },
-  {
-    label: 'Glass Wall',
-    gradient: 'linear-gradient(135deg, #06090d 0%, #0d1520 45%, #152030 100%)',
-    pattern: `url("data:image/svg+xml,%3Csvg width='20' height='80' viewBox='0 0 20 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='10' y1='0' x2='10' y2='80' stroke='%235588cc' stroke-width='0.6' opacity='0.25'/%3E%3C/svg%3E")`,
-    aspect: 'aspect-[4/3]',
-    sub: 'Floor-to-ceiling glazed viewing gallery',
-  },
-  {
-    label: 'Car Lift',
-    gradient: 'linear-gradient(145deg, #070c12 0%, #0f1826 45%, #172436 100%)',
-    pattern: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40L40 0M0 20L20 0M20 40L40 20' stroke='%23fff' stroke-width='0.35' opacity='0.06'/%3E%3C/svg%3E")`,
-    aspect: 'aspect-[4/3]',
-    sub: 'Two-post hydraulic lift — supercar-rated',
-  },
-  {
-    label: 'Detail Bay',
-    gradient: 'linear-gradient(135deg, #080c10 0%, #10182a 45%, #182436 100%)',
-    pattern: `url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%23ffffff' opacity='0.07'/%3E%3C/svg%3E")`,
-    aspect: 'aspect-[4/3]',
-    sub: 'Enclosed wash & detail bay with drainage',
-  },
-]
 
 const FLOOR_ZONES = [
   { color: '#3a5a72', label: 'Vehicle Storage Vault',       sub: '4 floor bays + car lift' },
@@ -289,32 +259,22 @@ export default function AutomotiveVault() {
     <>
       {/* ── HERO ── */}
       <section className="relative min-h-[80vh] flex flex-col justify-end overflow-hidden">
-        <div className="absolute inset-0" style={{
-          background: 'linear-gradient(155deg, #050607 0%, #0b0f14 30%, #111820 55%, #162030 78%, #1e2a3c 100%)',
-        }}>
-          {/* Carbon-fibre diagonal grid */}
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 28L28 0M14 28L28 14M0 14L14 0' stroke='%23fff' stroke-width='0.35' opacity='0.06'/%3E%3C/svg%3E")`,
-            backgroundSize: '28px 28px',
-          }} />
-          {/* Ghost watermark */}
-          <div className="absolute inset-0 flex items-center justify-end px-10 overflow-hidden select-none" aria-hidden>
-            <span className="font-display font-800 text-[18vw] leading-none tracking-tight uppercase"
-              style={{ color: 'rgba(58,90,114,0.08)' }}>
-              VAULT
-            </span>
-          </div>
-          {/* Bottom vignette */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-          {/* Accent vertical rule */}
-          <div className="absolute top-0 left-24 w-px h-full opacity-20"
-            style={{ background: ACCENT }} />
-        </div>
+        {/* Hero photo */}
+        <img
+          src="/automotive-vault-hero.png"
+          alt="Automotive Vault — private supercar storage with hydraulic lift, glass viewing wall and amber accent lighting"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        {/* Vignette */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/15" />
+        {/* Accent vertical rule */}
+        <div className="absolute top-0 left-24 w-px h-full opacity-20"
+          style={{ background: ACCENT }} />
 
         {/* Hero content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pb-16 lg:pb-24 w-full">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 mb-10 text-[11px] font-body tracking-widest uppercase text-compound-white/40">
+          <div className="flex items-center gap-2 mb-10 text-[11px] font-body tracking-widest uppercase text-compound-white/60">
             <Link to="/" className="hover:text-compound-white/70 transition-colors">Home</Link>
             <span>/</span>
             <span className="hover:text-compound-white/70 transition-colors cursor-pointer">Spaces</span>
@@ -329,13 +289,13 @@ export default function AutomotiveVault() {
             </span>
           </div>
 
-          <h1 className="font-display font-800 text-compound-white leading-none tracking-tight mb-6"
+          <h1 className="font-display font-800 text-compound-white leading-none tracking-tight mb-6 [text-shadow:0_2px_8px_rgba(0,0,0,0.5)]"
             style={{ fontSize: 'clamp(3rem, 8vw, 6rem)' }}>
             Automotive<br />Vault
           </h1>
 
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
-            <p className="font-body text-compound-white/60 text-[1.05rem] max-w-lg leading-relaxed">
+            <p className="font-body text-compound-white/80 text-[1.05rem] max-w-lg leading-relaxed">
               A climate-controlled, independently secured vault for storing high-value
               supercars — with a glass viewing wall, hydraulic lift, and detail bay.
             </p>
@@ -501,51 +461,44 @@ export default function AutomotiveVault() {
       {/* ── GALLERY ── */}
       <section className="bg-compound-white py-20 lg:py-28 border-t border-compound-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <SectionEyebrow>Rendered Visuals</SectionEyebrow>
+          <SectionEyebrow>Photography</SectionEyebrow>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
             <h2 className="font-display font-800 leading-none tracking-tight text-compound-black"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.75rem)' }}>
-              Design Gallery
+              The Collection on Display
             </h2>
             <p className="font-body text-compound-steel text-[0.875rem] max-w-xs">
-              Architectural render placeholders — photography coming upon completion.
+              Supercars under dramatic lighting, the glass viewing wall, and close-up detail shots from inside the Vault.
             </p>
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {GALLERY_IMAGES.map(img => (
-              <div key={img.label} className="group relative overflow-hidden">
-                <div className={`relative w-full ${img.aspect} overflow-hidden`}
-                  style={{ background: img.gradient }}>
-                  <div className="absolute inset-0" style={{
-                    backgroundImage: img.pattern,
-                    backgroundSize: '40px 40px',
-                  }} />
-                  <div className="absolute inset-0 flex items-center justify-center overflow-hidden select-none" aria-hidden>
-                    <span className="font-display font-800 text-[5rem] lg:text-[7rem] leading-none tracking-tight uppercase"
-                      style={{ color: 'rgba(58,90,114,0.10)' }}>
-                      {img.label}
-                    </span>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          <div className="space-y-4">
+            {/* Full-width interior wide shot — 16:9 */}
+            <div className="group relative overflow-hidden aspect-[16/9]">
+              <img src="/vault-gallery-3.png" alt="Wide interior shot of the Automotive Vault with supercars on a hydraulic lift and amber perimeter lighting" className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+                <p className="font-body text-[10px] tracking-widest2 uppercase mb-1" style={{ color: ACCENT_L }}>Automotive Vault</p>
+                <p className="font-display font-700 text-compound-white text-[1.1rem]">The Full Collection</p>
+                <p className="font-body text-compound-white/80 text-[0.82rem] mt-0.5">Hydraulic lift elevated · amber perimeter lighting · polished dark floor reflections</p>
+              </div>
+            </div>
+            {/* Two 4:3 cards side by side */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { src: '/vault-gallery-1.png', alt: 'Close-up of a matte black supercar wheel and front quarter-panel from a low ground angle', label: 'Supercar Detail', sub: 'Forged alloy wheel · red brake caliper · dark floor reflection' },
+                { src: '/vault-gallery-2.png', alt: 'View through the glass wall into the vault showing supercars under spotlighting', label: 'Glass Viewing Wall', sub: 'Floor-to-ceiling glazing — your collection visible to invited guests' },
+              ].map(({ src, alt, label, sub }) => (
+                <div key={label} className="group relative overflow-hidden aspect-[4/3]">
+                  <img src={src} alt={alt} className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="font-body text-[10px] tracking-widest2 uppercase mb-1"
-                      style={{ color: ACCENT_L }}>
-                      Automotive Vault
-                    </p>
-                    <p className="font-display font-700 text-compound-white text-[1.05rem]">
-                      {img.label}
-                    </p>
-                    <p className="font-body text-compound-white/60 text-[0.8rem] mt-0.5">
-                      {img.sub}
-                    </p>
-                  </div>
-                  <div className="absolute top-4 right-4 px-2.5 py-1 border border-white/20 bg-black/30 backdrop-blur-sm">
-                    <span className="font-body text-[9px] tracking-widest uppercase text-white/50">Render</span>
+                    <p className="font-body text-[10px] tracking-widest2 uppercase mb-1" style={{ color: ACCENT_L }}>Automotive Vault</p>
+                    <p className="font-display font-700 text-compound-white text-[1rem]">{label}</p>
+                    <p className="font-body text-compound-white/80 text-[0.8rem] mt-0.5">{sub}</p>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>

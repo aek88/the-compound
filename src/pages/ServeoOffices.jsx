@@ -51,36 +51,6 @@ const FEATURES = [
   },
 ]
 
-const GALLERY_IMAGES = [
-  {
-    label: 'Open Plan',
-    gradient: 'linear-gradient(145deg, #0a0f18 0%, #101828 40%, #162035 70%, #1c2a42 100%)',
-    pattern: `url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h1v32H0zM31 0h1v32h-1zM0 0v1h32V0zM0 31v1h32v-1z' fill='%23fff' opacity='0.06'/%3E%3C/svg%3E")`,
-    aspect: 'aspect-[4/3]',
-    sub: 'Light-filled open-plan with 10 workstations',
-  },
-  {
-    label: 'Boardroom',
-    gradient: 'linear-gradient(135deg, #080e1a 0%, #0e1a30 45%, #142240 100%)',
-    pattern: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20L20 0' stroke='%23ffffff' stroke-width='0.4' opacity='0.07'/%3E%3C/svg%3E")`,
-    aspect: 'aspect-[4/3]',
-    sub: 'Meeting Room A — 8-seat boardroom configuration',
-  },
-  {
-    label: 'Private Suite',
-    gradient: 'linear-gradient(160deg, #0c1220 0%, #121c32 50%, #182438 100%)',
-    pattern: `url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%23ffffff' opacity='0.08'/%3E%3C/svg%3E")`,
-    aspect: 'aspect-[4/3]',
-    sub: "Serveo Group's dedicated private office area",
-  },
-  {
-    label: 'Breakout',
-    gradient: 'linear-gradient(135deg, #0e1825 0%, #162030 45%, #1c2a3c 100%)',
-    pattern: `url("data:image/svg+xml,%3Csvg width='40' height='20' viewBox='0 0 40 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l20 10L40 0' fill='none' stroke='%23fff' stroke-width='0.4' opacity='0.07'/%3E%3C/svg%3E")`,
-    aspect: 'aspect-[4/3]',
-    sub: 'Lounge and informal collaboration zone',
-  },
-]
 
 const FLOOR_ZONES = [
   { color: '#1d4e8a', label: 'Open Plan Workspace',   sub: '10 Workstations' },
@@ -286,32 +256,20 @@ export default function ServeoOffices() {
     <>
       {/* ── HERO ── */}
       <section className="relative min-h-[80vh] flex flex-col justify-end overflow-hidden">
-        <div className="absolute inset-0" style={{
-          background: 'linear-gradient(155deg, #050810 0%, #0a1020 30%, #0f1830 55%, #142040 78%, #182848 100%)',
-        }}>
-          {/* Grid blueprint texture */}
-          <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px',
-          }} />
-          {/* Ghost watermark */}
-          <div className="absolute inset-0 flex items-center justify-end pr-8 overflow-hidden select-none" aria-hidden>
-            <span className="font-display font-800 leading-none tracking-tight uppercase"
-              style={{ fontSize: '16vw', color: 'rgba(29,78,138,0.08)' }}>
-              SERVEO
-            </span>
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-          {/* Vertical accent rule */}
-          <div className="absolute top-0 left-20 w-px h-full opacity-20" style={{ background: ACCENT }} />
-          {/* Ambient glow */}
-          <div className="absolute bottom-0 left-1/3 w-[600px] h-[400px] rounded-full blur-[120px] opacity-10"
-            style={{ background: ACCENT }} />
-        </div>
+        {/* Hero photo */}
+        <img
+          src="/serveo-offices-hero.png"
+          alt="Serveo Group Offices — open-plan workspace with glass meeting room and lounge seating inside a converted warehouse"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        {/* Vignette */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/15" />
+        {/* Vertical accent rule */}
+        <div className="absolute top-0 left-20 w-px h-full opacity-20" style={{ background: ACCENT }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pb-16 lg:pb-24 w-full">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 mb-10 text-[11px] font-body tracking-widest uppercase text-compound-white/40">
+          <div className="flex items-center gap-2 mb-10 text-[11px] font-body tracking-widest uppercase text-compound-white/60">
             <Link to="/" className="hover:text-compound-amber transition-colors">Home</Link>
             <span>/</span>
             <span className="cursor-pointer hover:text-compound-amber transition-colors">Spaces</span>
@@ -326,7 +284,7 @@ export default function ServeoOffices() {
             </span>
           </div>
 
-          <h1 className="font-display font-800 text-compound-white leading-none tracking-tight mb-3"
+          <h1 className="font-display font-800 text-compound-white leading-none tracking-tight mb-3 [text-shadow:0_2px_8px_rgba(0,0,0,0.5)]"
             style={{ fontSize: 'clamp(2.4rem, 7vw, 5.5rem)' }}>
             Serveo Group
           </h1>
@@ -336,7 +294,7 @@ export default function ServeoOffices() {
           </h1>
 
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
-            <p className="font-body text-compound-white/55 text-[1.05rem] max-w-lg leading-relaxed">
+            <p className="font-body text-compound-white/75 text-[1.05rem] max-w-lg leading-relaxed">
               Purpose-built open-plan office space with private suites, boardroom, and huddle rooms — home to Serveo Group, with meeting rooms and desks available for external hire.
             </p>
             <a href="#inquire"
@@ -493,42 +451,44 @@ export default function ServeoOffices() {
       {/* ── GALLERY ── */}
       <section className="bg-compound-white py-20 lg:py-28 border-t border-compound-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <SectionEyebrow>Rendered Visuals</SectionEyebrow>
+          <SectionEyebrow>Photography</SectionEyebrow>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
             <h2 className="font-display font-800 leading-none tracking-tight text-compound-black"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.75rem)' }}>
-              Design Gallery
+              The Space in Action
             </h2>
             <p className="font-body text-compound-steel text-[0.875rem] max-w-xs">
-              Architectural render placeholders — photography coming upon completion.
+              Focused work, boardroom meetings, and lounge collaboration — all inside the Serveo Offices.
             </p>
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {GALLERY_IMAGES.map((img) => (
-              <div key={img.label} className="group relative overflow-hidden">
-                <div className={`relative w-full ${img.aspect} overflow-hidden`} style={{ background: img.gradient }}>
-                  <div className="absolute inset-0" style={{ backgroundImage: img.pattern, backgroundSize: '40px 40px' }} />
-                  <div className="absolute inset-0 flex items-center justify-center overflow-hidden select-none" aria-hidden>
-                    <span className="font-display font-800 leading-none tracking-tight uppercase"
-                      style={{ fontSize: 'clamp(4rem,8vw,7rem)', color: `${ACCENT}12` }}>
-                      {img.label}
-                    </span>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          <div className="space-y-4">
+            {/* Full-width boardroom — 16:9 */}
+            <div className="group relative overflow-hidden aspect-[16/9]">
+              <img src="/serveo-gallery-2.png" alt="Meeting in progress inside the glass-walled boardroom viewed from the open-plan office floor" className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+                <p className="font-body text-[10px] tracking-widest2 uppercase mb-1" style={{ color: ACCENT }}>Serveo Offices</p>
+                <p className="font-display font-700 text-compound-white text-[1.1rem]">Boardroom in Session</p>
+                <p className="font-body text-compound-white/80 text-[0.82rem] mt-0.5">Meeting Room A — 8-seat boardroom behind the glass wall</p>
+              </div>
+            </div>
+            {/* Two 4:3 cards side by side */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { src: '/serveo-gallery-1.png', alt: 'Person typing on a laptop at a minimal oak desk with warehouse windows and natural light behind', label: 'Focused Work', sub: 'Natural oak desks · warehouse window light · USB-C at every seat' },
+                { src: '/serveo-gallery-3.png', alt: 'Lounge seating area with low sofas and late afternoon sun through industrial windows', label: 'Lounge Zone', sub: 'Informal meetings and quiet breaks · soft afternoon light' },
+              ].map(({ src, alt, label, sub }) => (
+                <div key={label} className="group relative overflow-hidden aspect-[4/3]">
+                  <img src={src} alt={alt} className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="font-body text-[10px] tracking-widest2 uppercase mb-1" style={{ color: ACCENT }}>
-                      Serveo Offices
-                    </p>
-                    <p className="font-display font-700 text-compound-white text-[1.05rem]">{img.label}</p>
-                    <p className="font-body text-compound-white/60 text-[0.8rem] mt-0.5">{img.sub}</p>
-                  </div>
-                  <div className="absolute top-4 right-4 px-2.5 py-1 border border-white/20 bg-black/30 backdrop-blur-sm">
-                    <span className="font-body text-[9px] tracking-widest uppercase text-white/50">Render</span>
+                    <p className="font-body text-[10px] tracking-widest2 uppercase mb-1" style={{ color: ACCENT }}>Serveo Offices</p>
+                    <p className="font-display font-700 text-compound-white text-[1rem]">{label}</p>
+                    <p className="font-body text-compound-white/80 text-[0.8rem] mt-0.5">{sub}</p>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>

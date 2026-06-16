@@ -290,32 +290,21 @@ export default function CucinaEdit() {
     <>
       {/* ── HERO ── */}
       <section className="relative min-h-[80vh] flex flex-col justify-end overflow-hidden">
-        {/* Placeholder hero image: warm terracotta kitchen gradient */}
-        <div className="absolute inset-0" style={{
-          background: 'linear-gradient(155deg, #1e0a02 0%, #4a1e08 30%, #7a3518 55%, #a85a28 78%, #c47a3a 100%)',
-        }}>
-          {/* Diagonal-line texture */}
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20L20 0' stroke='%23fff' stroke-width='0.4' opacity='0.07'/%3E%3C/svg%3E")`,
-            backgroundSize: '20px 20px',
-          }} />
-          {/* Large ghost typography */}
-          <div className="absolute inset-0 flex items-center justify-end px-10 overflow-hidden select-none" aria-hidden>
-            <span className="font-display font-800 text-[18vw] leading-none tracking-tight uppercase"
-              style={{ color: 'rgba(255,200,120,0.06)' }}>
-              CUCINA
-            </span>
-          </div>
-          {/* Vignette */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-          {/* Left amber rule */}
-          <div className="absolute top-0 left-24 w-px h-full bg-compound-amber opacity-20" />
-        </div>
+        {/* Hero photo */}
+        <img
+          src="/cucina-edit-hero.png"
+          alt="Cucina Edit — industrial cooking workshop with marble island and pasta station"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        {/* Vignette */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/15" />
+        {/* Left amber rule */}
+        <div className="absolute top-0 left-24 w-px h-full bg-compound-amber opacity-20" />
 
         {/* Hero content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pb-16 lg:pb-24 w-full">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 mb-10 text-[11px] font-body tracking-widest uppercase text-compound-white/40">
+          <div className="flex items-center gap-2 mb-10 text-[11px] font-body tracking-widest uppercase text-compound-white/60">
             <Link to="/" className="hover:text-compound-amber transition-colors">Home</Link>
             <span>/</span>
             <span className="hover:text-compound-amber transition-colors cursor-pointer">Spaces</span>
@@ -330,13 +319,13 @@ export default function CucinaEdit() {
             </span>
           </div>
 
-          <h1 className="font-display font-800 text-compound-white leading-none tracking-tight mb-6"
+          <h1 className="font-display font-800 text-compound-white leading-none tracking-tight mb-6 [text-shadow:0_2px_8px_rgba(0,0,0,0.5)]"
             style={{ fontSize: 'clamp(3rem, 8vw, 6rem)' }}>
             Cucina Edit
           </h1>
 
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
-            <p className="font-body text-compound-white/60 text-[1.05rem] max-w-lg leading-relaxed">
+            <p className="font-body text-compound-white/80 text-[1.05rem] max-w-lg leading-relaxed">
               A refined culinary studio built for pasta-making workshops, cooking
               classes, food content creation, and private dining experiences.
             </p>
@@ -492,60 +481,65 @@ export default function CucinaEdit() {
       {/* ── GALLERY ── */}
       <section className="bg-compound-white py-20 lg:py-28 border-t border-compound-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <SectionEyebrow>Rendered Visuals</SectionEyebrow>
+          <SectionEyebrow>Photography</SectionEyebrow>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
             <h2 className="font-display font-800 leading-none tracking-tight text-compound-black"
               style={{ fontSize: 'clamp(1.8rem, 4vw, 2.75rem)' }}>
-              Design Gallery
+              The Space in Action
             </h2>
             <p className="font-body text-compound-steel text-[0.875rem] max-w-xs">
-              Architectural render placeholders — photography coming upon completion.
+              Pasta-making, group classes, and finished dishes — all in the Cucina Edit studio.
             </p>
           </div>
 
-          {/* 2×2 gallery grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {GALLERY_IMAGES.map((img) => (
-              <div key={img.label} className="group relative overflow-hidden">
-                <div
-                  className={`relative w-full ${img.aspect} overflow-hidden`}
-                  style={{ background: img.gradient }}
-                >
-                  {/* Texture pattern */}
-                  <div className="absolute inset-0" style={{
-                    backgroundImage: img.pattern,
-                    backgroundSize: '40px 40px',
-                  }} />
-                  {/* Ghost label */}
-                  <div className="absolute inset-0 flex items-center justify-center overflow-hidden select-none" aria-hidden>
-                    <span className="font-display font-800 text-[5rem] lg:text-[7rem] leading-none tracking-tight uppercase"
-                      style={{ color: 'rgba(255,220,160,0.06)' }}>
-                      {img.label}
-                    </span>
-                  </div>
-                  {/* Vignette */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                  {/* Caption */}
+          {/* Editorial gallery: full-width class shot + two detail cards */}
+          <div className="space-y-4">
+            {/* Group class — full width */}
+            <div className="group relative overflow-hidden aspect-[16/9]">
+              <img
+                src="/cucina-gallery-2.png"
+                alt="Group cooking class in session around the marble island at Cucina Edit"
+                className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+                <p className="font-body text-[10px] tracking-widest2 uppercase text-compound-amber mb-1">Cucina Edit</p>
+                <p className="font-display font-700 text-compound-white text-[1.1rem]">Group Cooking Class</p>
+                <p className="font-body text-compound-white/80 text-[0.82rem] mt-0.5">Up to 12 participants around the marble island</p>
+              </div>
+            </div>
+
+            {/* Two detail shots side by side */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                {
+                  src: '/cucina-gallery-1.png',
+                  alt: 'Fresh pasta being rolled through a bronze pasta machine on marble',
+                  label: 'Pasta Making',
+                  sub: 'Bronze machine, Carrara marble, Edison backdrop',
+                },
+                {
+                  src: '/cucina-gallery-3.png',
+                  alt: 'Styled finished dishes — truffle tagliatelle, burrata and tiramisu on marble',
+                  label: 'Finished Dishes',
+                  sub: 'Truffle tagliatelle · burrata · tiramisu',
+                },
+              ].map(({ src, alt, label, sub }) => (
+                <div key={label} className="group relative overflow-hidden aspect-[4/3]">
+                  <img
+                    src={src}
+                    alt={alt}
+                    className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="font-body text-[10px] tracking-widest2 uppercase text-compound-amber mb-1">
-                      Cucina Edit
-                    </p>
-                    <p className="font-display font-700 text-compound-white text-[1.05rem]">
-                      {img.label}
-                    </p>
-                    <p className="font-body text-compound-white/60 text-[0.8rem] mt-0.5">
-                      {img.sub}
-                    </p>
-                  </div>
-                  {/* Render badge */}
-                  <div className="absolute top-4 right-4 px-2.5 py-1 border border-white/20 bg-black/30 backdrop-blur-sm">
-                    <span className="font-body text-[9px] tracking-widest uppercase text-white/50">
-                      Render
-                    </span>
+                    <p className="font-body text-[10px] tracking-widest2 uppercase text-compound-amber mb-1">Cucina Edit</p>
+                    <p className="font-display font-700 text-compound-white text-[1rem]">{label}</p>
+                    <p className="font-body text-compound-white/80 text-[0.8rem] mt-0.5">{sub}</p>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>

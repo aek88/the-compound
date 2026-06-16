@@ -4,27 +4,16 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex flex-col justify-end overflow-hidden"
     >
-      {/* Background: dark concrete gradient + noise texture */}
-      <div className="absolute inset-0 bg-compound-black">
-        {/* Warm industrial gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1a1510] via-compound-black to-[#0a0d0f]" />
-        {/* Subtle grid overlay (blueprint/warehouse feel) */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, #ffffff 1px, transparent 1px),
-              linear-gradient(to bottom, #ffffff 1px, transparent 1px)
-            `,
-            backgroundSize: '80px 80px',
-          }}
-        />
-        {/* Large amber accent: industrial stripe top-right */}
-        <div className="absolute top-0 right-0 w-px h-full bg-compound-amber opacity-20" />
-        <div className="absolute top-0 right-16 w-px h-3/4 bg-compound-amber opacity-10" />
-        {/* Glow */}
-        <div className="absolute bottom-0 left-1/4 w-[600px] h-[400px] rounded-full bg-compound-amber/5 blur-[120px]" />
-      </div>
+      {/* Hero photo */}
+      <img
+        src="/homepage-hero.png"
+        alt="The Compound — premium converted warehouse facility in Dubai at golden hour"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+      />
+      {/* Vignette — heavy at bottom where text sits, lighter at top to show the sky */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
+      {/* Amber accent rule */}
+      <div className="absolute top-0 right-0 w-px h-full bg-compound-amber opacity-20" />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pb-20 lg:pb-28 w-full">
@@ -38,7 +27,7 @@ export default function Hero() {
         </div>
 
         {/* Headline */}
-        <h1 className="font-display font-800 text-compound-white leading-[0.92] tracking-tight mb-8">
+        <h1 className="font-display font-800 text-compound-white leading-[0.92] tracking-tight mb-8 [text-shadow:0_2px_8px_rgba(0,0,0,0.5)]">
           <span className="block text-[clamp(3.5rem,10vw,9rem)]">THE</span>
           <span className="block text-[clamp(3.5rem,10vw,9rem)] text-compound-amber">COMPOUND</span>
         </h1>
@@ -46,7 +35,7 @@ export default function Hero() {
         {/* Descriptor row */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mt-12 pt-8 border-t border-white/10">
 
-          <p className="font-body font-300 text-compound-white/60 text-[1.05rem] leading-relaxed max-w-md">
+          <p className="font-body font-300 text-compound-white/80 text-[1.05rem] leading-relaxed max-w-md">
             A 20,000 sq&nbsp;ft multi-purpose warehouse where distinct businesses
             converge — unified by raw industrial space and a shared culture
             of craft, creativity, and ambition.
@@ -63,7 +52,7 @@ export default function Hero() {
                 <p className="font-display font-800 text-compound-white text-[2.2rem] leading-none">
                   {value}<span className="text-compound-amber text-[1.4rem]">{unit}</span>
                 </p>
-                <p className="font-body text-[10px] tracking-widest2 uppercase text-compound-white/40 mt-1">{label}</p>
+                <p className="font-body text-[10px] tracking-widest2 uppercase text-compound-white/60 mt-1">{label}</p>
               </div>
             ))}
           </div>
