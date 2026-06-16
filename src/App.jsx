@@ -8,6 +8,8 @@ import ServeoOffices from './pages/ServeoOffices'
 import AutomotiveVault from './pages/AutomotiveVault'
 import CafeCoworking from './pages/CafeCoworking'
 import FloorPlan from './pages/FloorPlan'
+import Membership from './pages/Membership'
+import MembershipSuccess from './pages/MembershipSuccess'
 
 export default function App() {
   return (
@@ -22,6 +24,8 @@ export default function App() {
           <Route path="/spaces/automotive-vault" element={<AutomotiveVault />} />
           <Route path="/spaces/cafe-coworking" element={<CafeCoworking />} />
           <Route path="/floor-plan" element={<FloorPlan />} />
+          <Route path="/membership" element={<Membership />} />
+          <Route path="/membership/success" element={<MembershipSuccess />} />
         </Routes>
       </main>
       <Footer />
