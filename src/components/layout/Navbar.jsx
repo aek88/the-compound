@@ -13,7 +13,7 @@ const navItems = [
   { label: 'Home',              href: '#home' },
   { label: 'Spaces',           dropdown: spaces },
   { label: 'Membership',       href: '/membership' },
-  { label: 'Lease / Rent',     href: '#lease' },
+  { label: 'Lease / Rent',     href: '/lease' },
   { label: 'Contact',          href: '#contact' },
 ]
 

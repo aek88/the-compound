@@ -2,6 +2,7 @@ const express = require('express')
 const Stripe = require('stripe')
 const cors = require('cors')
 require('dotenv').config()
+const { readAll, append } = require('./inquiries')
 
 const app = express()
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY)
@@ -77,6 +78,53 @@ app.post('/api/create-checkout-session', async (req, res) => {
     res.status(500).json({ error: 'Failed to start checkout. Please try again.' })
   }
 })
+
+// ── Inquiry routes ────────────────────────────────────────────────────────────
+
+const VALID_SPACES = [
+  'cucina-edit',
+  'ghost-dinners',
+  'serveo-offices',
+  'automotive-vault',
+  'cafe-coworking',
+]
+const VALID_USES = ['lease', 'content-creation', 'event', 'workshop', 'other']
+
+app.post('/api/inquiry', (req, res) => {
+  const { name, company, email, phone, space, intendedUse, preferredDates, message } = req.body
+
+  if (!name?.trim())
+    return res.status(400).json({ error: 'Name is required.' })
+  if (!email?.trim() || !email.includes('@'))
+    return res.status(400).json({ error: 'A valid email address is required.' })
+  if (!VALID_SPACES.includes(space))
+    return res.status(400).json({ error: 'Please select a valid space.' })
+  if (!VALID_USES.includes(intendedUse))
+    return res.status(400).json({ error: 'Please select an intended use.' })
+
+  const inquiry = append({
+    id: Date.now(),
+    submittedAt: new Date().toISOString(),
+    name: name.trim(),
+    company: company?.trim() || '',
+    email: email.trim().toLowerCase(),
+    phone: phone?.trim() || '',
+    space,
+    intendedUse,
+    preferredDates: preferredDates?.trim() || '',
+    message: message?.trim() || '',
+  })
+
+  console.log(`New inquiry #${inquiry.id} from ${inquiry.email} — ${inquiry.space} / ${inquiry.intendedUse}`)
+  res.json({ success: true, id: inquiry.id })
+})
+
+// Simple review endpoint — open http://localhost:3001/api/inquiries in your browser
+app.get('/api/inquiries', (req, res) => {
+  res.json(readAll())
+})
+
+// ─────────────────────────────────────────────────────────────────────────────
 
 app.listen(PORT, () => {
   console.log(`The Compound API running on http://localhost:${PORT}`)

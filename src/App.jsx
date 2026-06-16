@@ -10,6 +10,7 @@ import CafeCoworking from './pages/CafeCoworking'
 import FloorPlan from './pages/FloorPlan'
 import Membership from './pages/Membership'
 import MembershipSuccess from './pages/MembershipSuccess'
+import LeaseInquiry from './pages/LeaseInquiry'
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="/floor-plan" element={<FloorPlan />} />
           <Route path="/membership" element={<Membership />} />
           <Route path="/membership/success" element={<MembershipSuccess />} />
+          <Route path="/lease" element={<LeaseInquiry />} />
         </Routes>
       </main>
       <Footer />
