@@ -14,7 +14,7 @@ const navItems = [
   { label: 'Spaces',           dropdown: spaces },
   { label: 'Membership',       href: '/membership' },
   { label: 'Lease / Rent',     href: '/lease' },
-  { label: 'Contact',          href: '#contact' },
+  { label: 'Contact',          href: '/contact' },
 ]
 
 export default function Navbar() {

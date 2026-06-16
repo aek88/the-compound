@@ -2,7 +2,8 @@ const express = require('express')
 const Stripe = require('stripe')
 const cors = require('cors')
 require('dotenv').config()
-const { readAll, append } = require('./inquiries')
+const { readAll, append }                     = require('./inquiries')
+const { readAll: readContacts, append: appendContact } = require('./contacts')
 
 const app = express()
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY)
@@ -122,6 +123,40 @@ app.post('/api/inquiry', (req, res) => {
 // Simple review endpoint — open http://localhost:3001/api/inquiries in your browser
 app.get('/api/inquiries', (req, res) => {
   res.json(readAll())
+})
+
+// ── Contact routes ────────────────────────────────────────────────────────────
+
+const VALID_SUBJECTS = ['general', 'press', 'partnership', 'event', 'other', '']
+
+app.post('/api/contact', (req, res) => {
+  const { name, email, subject, message } = req.body
+
+  if (!name?.trim())
+    return res.status(400).json({ error: 'Name is required.' })
+  if (!email?.trim() || !email.includes('@'))
+    return res.status(400).json({ error: 'A valid email address is required.' })
+  if (!message?.trim())
+    return res.status(400).json({ error: 'Message is required.' })
+  if (!VALID_SUBJECTS.includes(subject))
+    return res.status(400).json({ error: 'Invalid subject.' })
+
+  const record = appendContact({
+    id: Date.now(),
+    submittedAt: new Date().toISOString(),
+    name: name.trim(),
+    email: email.trim().toLowerCase(),
+    subject: subject || 'general',
+    message: message.trim(),
+  })
+
+  console.log(`New contact message #${record.id} from ${record.email} — ${record.subject}`)
+  res.json({ success: true, id: record.id })
+})
+
+// Open http://localhost:3001/api/contacts to review messages
+app.get('/api/contacts', (req, res) => {
+  res.json(readContacts())
 })
 
 // ─────────────────────────────────────────────────────────────────────────────

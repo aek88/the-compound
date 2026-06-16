@@ -11,6 +11,7 @@ import FloorPlan from './pages/FloorPlan'
 import Membership from './pages/Membership'
 import MembershipSuccess from './pages/MembershipSuccess'
 import LeaseInquiry from './pages/LeaseInquiry'
+import Contact from './pages/Contact'
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/membership" element={<Membership />} />
           <Route path="/membership/success" element={<MembershipSuccess />} />
           <Route path="/lease" element={<LeaseInquiry />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
       <Footer />
