@@ -1,4 +1,17 @@
 import { useState } from 'react'
+import DateRangePicker from '../components/ui/DateRangePicker'
+
+// Placeholder unavailable dates — replace with real booking data later.
+// Scattered across the next two months to show how the calendar looks in practice.
+const UNAVAILABLE_DATES = [
+  // June 2026
+  [2026, 5, 18], [2026, 5, 19], [2026, 5, 22], [2026, 5, 23], [2026, 5, 25],
+  // July 2026
+  [2026, 6, 1], [2026, 6, 2], [2026, 6, 6], [2026, 6, 7], [2026, 6, 8],
+  [2026, 6, 9], [2026, 6, 10], [2026, 6, 14], [2026, 6, 20], [2026, 6, 21],
+  // August 2026
+  [2026, 7, 3], [2026, 7, 4], [2026, 7, 10], [2026, 7, 24], [2026, 7, 25],
+].map(([y, m, d]) => new Date(y, m, d))
 
 // ── Field data ─────────────────────────────────────────────────────────────────
 const SPACES = [
@@ -299,18 +312,18 @@ export default function LeaseInquiry() {
                   </div>
                 </div>
 
-                {/* Preferred dates */}
+                {/* Preferred dates — calendar picker */}
                 <div className="mb-5">
-                  <Label htmlFor="preferredDates">Preferred Dates</Label>
-                  <input
-                    id="preferredDates" type="text"
-                    placeholder="e.g. From March 2026 · 14–15 June · Flexible"
-                    className={`${inputClass} ${fieldBorder()}`}
-                    value={form.preferredDates} onChange={set('preferredDates')}
+                  <Label>Preferred Dates</Label>
+                  <DateRangePicker
+                    unavailableDates={UNAVAILABLE_DATES}
+                    onChange={val => setForm(f => ({ ...f, preferredDates: val }))}
                   />
-                  <p className="mt-1 text-[11px] text-compound-steel">
-                    For leases: approximate start date. For bookings: specific date(s) or range.
-                  </p>
+                  {form.preferredDates && (
+                    <p className="mt-1.5 text-[11px] text-compound-steel">
+                      Selected: <span className="text-compound-black font-display font-600">{form.preferredDates}</span>
+                    </p>
+                  )}
                 </div>
 
                 {/* Message */}
