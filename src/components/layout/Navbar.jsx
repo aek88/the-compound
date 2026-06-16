@@ -6,6 +6,7 @@ const spaces = [
   { label: 'Serveo Offices',        href: '#serveo-offices' },
   { label: 'Automotive Vault',      href: '#automotive-vault' },
   { label: 'Cafe & Co-working',     href: '#cafe-coworking' },
+  { label: 'Master Floor Plan',     href: '/floor-plan' },
 ]
 
 const navItems = [

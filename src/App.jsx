@@ -7,6 +7,7 @@ import GhostDinnersKitchen from './pages/GhostDinnersKitchen'
 import ServeoOffices from './pages/ServeoOffices'
 import AutomotiveVault from './pages/AutomotiveVault'
 import CafeCoworking from './pages/CafeCoworking'
+import FloorPlan from './pages/FloorPlan'
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="/spaces/serveo-offices" element={<ServeoOffices />} />
           <Route path="/spaces/automotive-vault" element={<AutomotiveVault />} />
           <Route path="/spaces/cafe-coworking" element={<CafeCoworking />} />
+          <Route path="/floor-plan" element={<FloorPlan />} />
         </Routes>
       </main>
       <Footer />
