@@ -1,20 +1,21 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 const spaces = [
-  { label: 'Cucina Edit',          href: '#cucina-edit' },
-  { label: 'Ghost Dinners Kitchen', href: '#ghost-dinners' },
-  { label: 'Serveo Offices',        href: '#serveo-offices' },
-  { label: 'Automotive Vault',      href: '#automotive-vault' },
-  { label: 'Cafe & Co-working',     href: '#cafe-coworking' },
-  { label: 'Master Floor Plan',     href: '/floor-plan' },
+  { label: 'Cucina Edit',           to: '/spaces/cucina-edit' },
+  { label: 'Ghost Dinners Kitchen',  to: '/spaces/ghost-dinners' },
+  { label: 'Serveo Offices',         to: '/spaces/serveo-offices' },
+  { label: 'Automotive Vault',       to: '/spaces/automotive-vault' },
+  { label: 'Cafe & Co-working',      to: '/spaces/cafe-coworking' },
+  { label: 'Master Floor Plan',      to: '/floor-plan' },
 ]
 
 const navItems = [
-  { label: 'Home',              href: '#home' },
+  { label: 'Home',              to: '/' },
   { label: 'Spaces',           dropdown: spaces },
-  { label: 'Membership',       href: '/membership' },
-  { label: 'Lease / Rent',     href: '/lease' },
-  { label: 'Contact',          href: '/contact' },
+  { label: 'Membership',       to: '/membership' },
+  { label: 'Lease / Rent',     to: '/lease' },
+  { label: 'Contact',          to: '/contact' },
 ]
 
 export default function Navbar() {
@@ -54,14 +55,14 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-16 lg:h-20">
 
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-3 group">
           <span className="w-7 h-7 border-2 border-compound-amber flex items-center justify-center rotate-45 group-hover:rotate-0 transition-transform duration-300">
             <span className="w-2 h-2 bg-compound-amber block -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
           </span>
           <span className="font-display font-800 text-[15px] tracking-widest2 uppercase text-compound-black">
             The Compound
           </span>
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <ul className="hidden lg:flex items-center gap-8">
@@ -91,14 +92,14 @@ export default function Navbar() {
                     <ul className="py-2">
                       {spaces.map((space) => (
                         <li key={space.label}>
-                          <a
-                            href={space.href}
+                          <Link
+                            to={space.to}
                             onClick={() => setDropOpen(false)}
                             className="flex items-center gap-3 px-5 py-3 text-[12px] font-body font-medium tracking-widest uppercase text-compound-steel hover:text-compound-black hover:bg-compound-surface transition-colors group"
                           >
                             <span className="w-1 h-1 bg-compound-amber opacity-0 group-hover:opacity-100 transition-opacity" />
                             {space.label}
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -107,29 +108,29 @@ export default function Navbar() {
               </li>
             ) : (
               <li key={item.label}>
-                <a
-                  href={item.href}
+                <Link
+                  to={item.to}
                   className={`${linkClass} ${
                     scrolled ? 'text-compound-steel hover:text-compound-black' : 'text-compound-white/70 hover:text-compound-white'
                   }`}
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             )
           )}
         </ul>
 
         {/* CTA */}
-        <a
-          href="#lease"
+        <Link
+          to="/lease"
           className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 bg-compound-amber text-compound-white text-[12px] font-display font-600 tracking-widest uppercase hover:bg-compound-amber-light transition-colors duration-200"
         >
           Inquire
           <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
-        </a>
+        </Link>
 
         {/* Mobile hamburger */}
         <button
@@ -137,9 +138,9 @@ export default function Navbar() {
           onClick={() => setMobileOpen((v) => !v)}
           aria-label="Toggle menu"
         >
-          <span className={`block w-6 h-px bg-compound-black transition-all duration-200 ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
-          <span className={`block w-6 h-px bg-compound-black transition-all duration-200 ${mobileOpen ? 'opacity-0' : ''}`} />
-          <span className={`block w-6 h-px bg-compound-black transition-all duration-200 ${mobileOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+          <span className={`block w-6 h-px transition-all duration-200 ${scrolled || mobileOpen ? 'bg-compound-black' : 'bg-compound-white'} ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
+          <span className={`block w-6 h-px transition-all duration-200 ${scrolled || mobileOpen ? 'bg-compound-black' : 'bg-compound-white'} ${mobileOpen ? 'opacity-0' : ''}`} />
+          <span className={`block w-6 h-px transition-all duration-200 ${scrolled || mobileOpen ? 'bg-compound-black' : 'bg-compound-white'} ${mobileOpen ? '-rotate-45 -translate-y-2' : ''}`} />
         </button>
       </nav>
 
@@ -154,38 +155,38 @@ export default function Navbar() {
                     {item.label}
                   </p>
                   {spaces.map((space) => (
-                    <a
+                    <Link
                       key={space.label}
-                      href={space.href}
+                      to={space.to}
                       onClick={() => setMobileOpen(false)}
                       className="flex items-center gap-3 pl-10 pr-6 py-2.5 text-[12px] font-body tracking-wider uppercase text-compound-steel hover:text-compound-black transition-colors"
                     >
                       <span className="w-1 h-1 bg-compound-amber" />
                       {space.label}
-                    </a>
+                    </Link>
                   ))}
                 </li>
               ) : (
                 <li key={item.label}>
-                  <a
-                    href={item.href}
+                  <Link
+                    to={item.to}
                     onClick={() => setMobileOpen(false)}
                     className="block px-6 py-3 text-[12px] font-body font-medium tracking-widest uppercase text-compound-steel hover:text-compound-black transition-colors border-b border-compound-border/50"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               )
             )}
           </ul>
           <div className="px-6 pb-6">
-            <a
-              href="#lease"
+            <Link
+              to="/lease"
               onClick={() => setMobileOpen(false)}
               className="block w-full text-center py-3 bg-compound-amber text-compound-white text-[12px] font-display font-600 tracking-widest uppercase"
             >
               Inquire Now
-            </a>
+            </Link>
           </div>
         </div>
       )}

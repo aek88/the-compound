@@ -185,7 +185,7 @@ export default function CafeCoworking() {
               co-working floor that connects every space and every person under one roof.
             </p>
             <a
-              href="/#membership"
+              href="/membership"
               className="shrink-0 inline-flex items-center gap-2 px-5 py-3 text-compound-white font-display font-600 text-[11px] tracking-widest uppercase transition-colors"
               style={{ background: ACCENT }}
               onMouseEnter={e => e.currentTarget.style.background = ACCENT_L}
@@ -293,7 +293,7 @@ export default function CafeCoworking() {
             </div>
 
             <a
-              href="/#membership"
+              href="/membership"
               className="flex items-center justify-center gap-3 w-full py-4 text-compound-white font-display font-600 text-[12px] tracking-widest uppercase transition-colors"
               style={{ background: ACCENT }}
               onMouseEnter={e => e.currentTarget.style.background = ACCENT_L}
@@ -502,7 +502,7 @@ export default function CafeCoworking() {
 
               <div className="flex flex-col gap-4">
                 <a
-                  href="/#membership"
+                  href="/membership"
                   className="inline-flex items-center justify-center gap-3 w-full py-4 bg-compound-white font-display font-700 text-[13px] tracking-widest uppercase transition-colors hover:bg-compound-surface"
                   style={{ color: ACCENT }}
                 >
@@ -532,7 +532,7 @@ export default function CafeCoworking() {
             </p>
           </div>
           <Link
-            to="/#spaces"
+            to="/"
             className="inline-flex items-center gap-3 px-7 py-3.5 border border-compound-black text-compound-black font-display font-600 text-[12px] tracking-widest uppercase hover:bg-compound-black hover:text-compound-white transition-colors duration-200"
           >
             View All Spaces

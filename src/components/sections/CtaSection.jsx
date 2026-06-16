@@ -66,7 +66,7 @@ export default function CtaSection() {
 
             <div className="flex flex-wrap gap-4">
               <a
-                href="#membership"
+                href="/membership"
                 className="inline-flex items-center gap-3 px-7 py-4 bg-compound-amber text-compound-white font-display font-600 text-[12px] tracking-widest uppercase hover:bg-compound-amber-light transition-colors duration-200"
               >
                 Explore Membership
@@ -75,7 +75,7 @@ export default function CtaSection() {
                 </svg>
               </a>
               <a
-                href="#contact"
+                href="/contact"
                 className="inline-flex items-center gap-3 px-7 py-4 border border-white/15 text-compound-white/60 font-display font-600 text-[12px] tracking-widest uppercase hover:border-white/40 hover:text-compound-white transition-colors duration-200"
               >
                 Ask a Question
@@ -136,7 +136,7 @@ export default function CtaSection() {
 
             <div className="flex flex-wrap gap-4">
               <a
-                href="#lease"
+                href="/lease"
                 className="inline-flex items-center gap-3 px-7 py-4 bg-compound-white text-compound-black font-display font-600 text-[12px] tracking-widest uppercase hover:bg-compound-surface transition-colors duration-200"
               >
                 Inquire Now
@@ -145,7 +145,7 @@ export default function CtaSection() {
                 </svg>
               </a>
               <a
-                href="/spaces"
+                href="/"
                 className="inline-flex items-center gap-3 px-7 py-4 border border-white/15 text-compound-white/60 font-display font-600 text-[12px] tracking-widest uppercase hover:border-white/40 hover:text-compound-white transition-colors duration-200"
               >
                 Browse Spaces

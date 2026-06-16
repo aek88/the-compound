@@ -1,3 +1,13 @@
+import { Link } from 'react-router-dom'
+
+const SPACE_LINKS = [
+  { label: 'Cucina Edit',           to: '/spaces/cucina-edit' },
+  { label: 'Ghost Dinners Kitchen',  to: '/spaces/ghost-dinners' },
+  { label: 'Serveo Offices',         to: '/spaces/serveo-offices' },
+  { label: 'Automotive Vault',       to: '/spaces/automotive-vault' },
+  { label: 'Cafe & Co-working',      to: '/spaces/cafe-coworking' },
+]
+
 export default function Footer() {
   return (
     <footer className="bg-compound-black text-compound-white/50 border-t border-white/10">
@@ -13,8 +23,10 @@ export default function Footer() {
         <div>
           <p className="font-display font-600 text-[11px] tracking-widest2 uppercase text-compound-amber mb-4">Spaces</p>
           <ul className="space-y-2 text-[13px] font-body">
-            {['Cucina Edit', 'Ghost Dinners Kitchen', 'Serveo Offices', 'Automotive Vault', 'Cafe & Co-working'].map(s => (
-              <li key={s}><a href="#" className="hover:text-compound-white transition-colors">{s}</a></li>
+            {SPACE_LINKS.map(s => (
+              <li key={s.label}>
+                <Link to={s.to} className="hover:text-compound-white transition-colors">{s.label}</Link>
+              </li>
             ))}
           </ul>
         </div>
