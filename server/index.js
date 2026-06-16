@@ -80,4 +80,12 @@ app.post('/api/create-checkout-session', async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`The Compound API running on http://localhost:${PORT}`)
+}).on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`\nError: port ${PORT} is already in use.`)
+    console.error(`Stop the existing process first:\n  lsof -ti:${PORT} | xargs kill -9\n`)
+    process.exit(1)
+  } else {
+    throw err
+  }
 })
